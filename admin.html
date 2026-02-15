@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard – ShuttlePulse</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header class="navbar">
+    <h2>👔 Admin Dashboard</h2>
+    <a href="index.html" class="back">← Home</a>
+  </header>
+
+  <main class="admin">
+
+    <!-- OVERVIEW STATISTICS -->
+    <section class="card">
+      <h3>📊 System Overview</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        
+        <!-- Total Requests Card -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">
+          <h4 style="margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Total Requests</h4>
+          <p style="font-size: 2.5rem; font-weight: bold; margin: 0;" id="totalRequests">0</p>
+        </div>
+
+        <!-- Pending Requests Card -->
+        <div style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);">
+          <h4 style="margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Pending</h4>
+          <p style="font-size: 2.5rem; font-weight: bold; margin: 0;" id="pendingRequests">0</p>
+        </div>
+
+        <!-- Accepted Requests Card -->
+        <div style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);">
+          <h4 style="margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Accepted</h4>
+          <p style="font-size: 2.5rem; font-weight: bold; margin: 0;" id="acceptedRequests">0</p>
+        </div>
+
+        <!-- Completed Requests Card -->
+        <div style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%); padding: 1.5rem; border-radius: 12px; text-align: center; color: white; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);">
+          <h4 style="margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Completed</h4>
+          <p style="font-size: 2.5rem; font-weight: bold; margin: 0;" id="completedRequests">0</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRANSPORT STATISTICS -->
+    <section class="card">
+      <h3>🚍 Transport Status Summary</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        
+        <!-- On Time -->
+        <div style="background: rgba(39, 174, 96, 0.1); padding: 1rem; border-radius: 10px; text-align: center; border-left: 4px solid #27ae60;">
+          <h4 style="color: #27ae60; margin-bottom: 0.5rem; font-size: 0.9rem;">✅ On Time</h4>
+          <p style="font-size: 2rem; font-weight: bold; color: #27ae60; margin: 0;" id="onTimeReports">0</p>
+        </div>
+
+        <!-- Delayed -->
+        <div style="background: rgba(243, 156, 18, 0.1); padding: 1rem; border-radius: 10px; text-align: center; border-left: 4px solid #f39c12;">
+          <h4 style="color: #f39c12; margin-bottom: 0.5rem; font-size: 0.9rem;">⏱️ Delayed</h4>
+          <p style="font-size: 2rem; font-weight: bold; color: #f39c12; margin: 0;" id="delayedReports">0</p>
+        </div>
+
+        <!-- Cancelled -->
+        <div style="background: rgba(231, 76, 60, 0.1); padding: 1rem; border-radius: 10px; text-align: center; border-left: 4px solid #e74c3c;">
+          <h4 style="color: #e74c3c; margin-bottom: 0.5rem; font-size: 0.9rem;">❌ Cancelled</h4>
+          <p style="font-size: 2rem; font-weight: bold; color: #e74c3c; margin: 0;" id="cancelledReports">0</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EVENT STATISTICS -->
+    <section class="card">
+      <h3>📅 Event Statistics</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        
+        <!-- Today's Events -->
+        <div style="background: rgba(155, 89, 182, 0.1); padding: 1rem; border-radius: 10px; text-align: center; border-left: 4px solid #9b59b6;">
+          <h4 style="color: #9b59b6; margin-bottom: 0.5rem; font-size: 0.9rem;">📍 Today's Events</h4>
+          <p style="font-size: 2rem; font-weight: bold; color: #9b59b6; margin: 0;" id="todayEvents">0</p>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 10px; text-align: center; border-left: 4px solid #3498db;">
+          <h4 style="color: #3498db; margin-bottom: 0.5rem; font-size: 0.9rem;">🔜 Upcoming Events</h4>
+          <p style="font-size: 2rem; font-weight: bold; color: #3498db; margin: 0;" id="upcomingEvents">0</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TRANSPORT REPORTS -->
+    <section class="card">
+      <h3>🛠 Recent Transport Reports</h3>
+      <div style="max-height: 400px; overflow-y: auto;">
+        <ul id="adminReportsList">
+          <li>Loading reports...</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ALL PICKUP REQUESTS -->
+    <section class="card">
+      <h3>📌 All Pickup Requests</h3>
+      <div style="max-height: 400px; overflow-y: auto;">
+        <ul id="adminPickupsList">
+          <li>Loading pickup requests...</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ALL EVENTS -->
+    <section class="card">
+      <h3>📅 Scheduled Events</h3>
+      <div style="max-height: 400px; overflow-y: auto;">
+        <ul id="adminEventsList">
+          <li>Loading events...</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SYSTEM HEALTH -->
+    <section class="card">
+      <h3>💚 System Health</h3>
+      <div style="margin-top: 1rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: rgba(39, 174, 96, 0.1); border-radius: 8px; margin-bottom: 0.5rem;">
+          <span style="font-weight: 600;">🔥 Firebase Connection</span>
+          <span style="color: #27ae60; font-weight: bold;">● Connected</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: rgba(39, 174, 96, 0.1); border-radius: 8px; margin-bottom: 0.5rem;">
+          <span style="font-weight: 600;">🔄 Real-time Updates</span>
+          <span style="color: #27ae60; font-weight: bold;">● Active</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem; background: rgba(39, 174, 96, 0.1); border-radius: 8px;">
+          <span style="font-weight: 600;">🔐 Authentication</span>
+          <span style="color: #27ae60; font-weight: bold;">● Enabled</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

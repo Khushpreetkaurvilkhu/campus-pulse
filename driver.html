@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Driver Panel – ShuttlePulse</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header class="navbar">
+    <h2>🧑‍✈️ Driver Panel</h2>
+    <a href="index.html" class="back">← Home</a>
+  </header>
+
+  <main class="driver">
+
+    <!-- ROUTE CONTROLS -->
+    <section class="card">
+      <h3>🚍 Route Controls</h3>
+
+      <button class="btn" onclick="updateRoute('Started Route')">
+        Start Route
+      </button>
+
+      <button class="btn secondary" onclick="updateRoute('Reached Stop')">
+        Reached Stop
+      </button>
+
+      <button class="btn danger" onclick="updateRoute('Route Completed')">
+        End Route
+      </button>
+
+      <p class="route-status">
+        Current Status: <span id="routeStatus">Idle</span>
+      </p>
+    </section>
+
+
+    <!-- TRANSPORT REPORT FORM -->
+    <section class="card">
+      <h3>🛠 Report Transport Status</h3>
+
+      <label>Report Type:</label>
+      <select id="reportType">
+        <option value="bus">Bus</option>
+        <option value="shuttle">Shuttle</option>
+        <option value="parking">Parking</option>
+      </select>
+
+      <label>Route / Location:</label>
+      <input
+        type="text"
+        id="reportRoute"
+        placeholder="Route A: Main Gate → Library"
+      />
+
+      <label>Status:</label>
+      <select id="reportStatus">
+        <option value="on-time">On Time</option>
+        <option value="delayed">Delayed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+
+      <button class="btn secondary" onclick="submitReport()">
+        Submit Report
+      </button>
+
+      <p id="reportMsg" style="margin-top: 1rem; padding: 0.8rem; background: #f9f9f9; border-radius: 8px;"></p>
+    </section>
+
+
+    <!-- PICKUP REQUESTS QUEUE -->
+    <section class="card">
+      <h3>📌 Pickup Requests Queue</h3>
+
+      <ul id="requestList">
+        <li>Loading requests...</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>

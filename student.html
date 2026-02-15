@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard – ShuttlePulse</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header class="navbar">
+    <h2>🎓 Student Dashboard</h2>
+    <a href="index.html" class="back">← Home</a>
+  </header>
+
+  <main class="student">
+
+    <!-- QUICK STATS -->
+    <section class="card">
+      <h3>📊 Quick Overview</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1rem; border-radius: 10px; text-align: center; color: white;">
+          <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.3rem;">My Events</div>
+          <div style="font-size: 2rem; font-weight: bold;" id="myEventsCount">0</div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); padding: 1rem; border-radius: 10px; text-align: center; color: white;">
+          <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.3rem;">My Requests</div>
+          <div style="font-size: 2rem; font-weight: bold;" id="myRequestsCount">0</div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%); padding: 1rem; border-radius: 10px; text-align: center; color: white;">
+          <div style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 0.3rem;">Active Alerts</div>
+          <div style="font-size: 2rem; font-weight: bold;" id="alertsCount">0</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- YOUR REQUEST STATUS -->
+    <section class="card">
+      <h3>🎫 Your Latest Request</h3>
+      <div class="status-box">
+        <div id="requestStatus">
+          <p style="color: #666; text-align: center; padding: 1rem;">
+            📭 No request yet<br>
+            <small>Request a pickup below to track status here</small>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PICKUP REQUEST -->
+    <section class="card">
+      <h3>📌 Request Pickup</h3>
+      <label>Select Pickup Stop:</label>
+      <select id="pickupStop">
+        <option>Hostel 1</option>
+        <option>Hostel 3</option>
+        <option>Library</option>
+        <option>Main Gate</option>
+        <option>Academic Block</option>
+      </select>
+
+      <button class="btn" onclick="requestPickup()" style="margin-top: 1rem; width: 100%;">
+        🚍 Request Shuttle Now
+      </button>
+    </section>
+
+    <!-- LIVE SHUTTLE STATUS -->
+    <section class="card">
+      <h3>🚍 All Active Requests</h3>
+      <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
+        See what other students are requesting in real-time
+      </p>
+      
+      <div style="max-height: 300px; overflow-y: auto;">
+        <ul id="requestList">
+          <li>Loading requests...</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="card">
+      <h3>📅 My Schedule</h3>
+      
+      <div style="margin-bottom: 1.5rem;">
+        <input type="text" id="eventTitle" placeholder="Event Title (e.g., Math Class, Meeting)" />
+        
+        <label>Start Time:</label>
+        <input type="datetime-local" id="eventStart"/>
+        
+        <label>End Time:</label>
+        <input type="datetime-local" id="eventEnd"/>
+        
+        <button class="btn secondary" onclick="addEvent()" style="margin-top: 0.5rem; width: 100%;">
+          💾 Save Event
+        </button>
+      </div>
+      
+      <div id="eventMsg" style="margin-top: 1rem; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+        <p style="color: #666; text-align: center;">
+          📭 No events added yet<br>
+          <small>Add your first event using the form above!</small>
+        </p>
+      </div>
+    </section>
+
+    <!-- ALERTS -->
+    <section class="card">
+      <h3>⚠️ Transport Alerts</h3>
+      <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
+        Real-time updates on transport status
+      </p>
+      
+      <div style="max-height: 400px; overflow-y: auto;">
+        <ul id="alertsList">
+          <li>Loading alerts...</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Firebase + App JS -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – ShuttlePulse</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <h2 class="logo">CampusFlow</h2>
+    <p class="tagline">ShuttlePulse Transport Automation</p>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-card" style="max-width: 500px;">
+      <h1>🔐 Welcome Back</h1>
+      <p>Sign in to access your dashboard</p>
+
+      <!-- Tab Navigation -->
+      <div class="tab-container">
+        <button class="tab-btn active" onclick="showTab('login')">Login</button>
+        <button class="tab-btn" onclick="showTab('signup')">Sign Up</button>
+        <button class="tab-btn" onclick="showTab('guest')">Guest Access</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="loginTab" class="auth-form active">
+        <h3>Login to Your Account</h3>
+        
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="your.email@example.com" />
+        
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter password" />
+        
+        <button class="btn" onclick="loginUser()" style="width: 100%; margin-top: 1rem;">
+          🔓 Login
+        </button>
+
+        <div style="text-align: center; margin-top: 1rem;">
+          <a href="#" onclick="showTab('reset')" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+            Forgot Password?
+          </a>
+        </div>
+
+        <div id="loginMsg" class="auth-message"></div>
+      </div>
+
+      <!-- SIGNUP FORM -->
+      <div id="signupTab" class="auth-form">
+        <h3>Create New Account</h3>
+        
+        <label>Full Name</label>
+        <input type="text" id="signupName" placeholder="John Doe" />
+        
+        <label>Email</label>
+        <input type="email" id="signupEmail" placeholder="your.email@example.com" />
+        
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="At least 6 characters" />
+        
+        <label>Confirm Password</label>
+        <input type="password" id="signupPasswordConfirm" placeholder="Re-enter password" />
+        
+        <label>I am a:</label>
+        <select id="userRole">
+          <option value="student">🎓 Student</option>
+          <option value="driver">🚗 Driver</option>
+          <option value="admin">👔 Admin</option>
+        </select>
+        
+        <button class="btn" onclick="signupUser()" style="width: 100%; margin-top: 1rem;">
+          📝 Create Account
+        </button>
+
+        <div id="signupMsg" class="auth-message"></div>
+      </div>
+
+      <!-- GUEST ACCESS -->
+      <div id="guestTab" class="auth-form">
+        <h3>Continue as Guest</h3>
+        
+        <p style="color: #666; font-size: 0.95rem; line-height: 1.6; margin: 1.5rem 0;">
+          Browse the system without creating an account. Limited features available.
+        </p>
+
+        <div style="background: rgba(243, 156, 18, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #f39c12; margin-bottom: 1.5rem;">
+          <p style="margin: 0; color: #666; font-size: 0.9rem;">
+            ⚠️ <strong>Guest Limitations:</strong><br>
+            • Cannot save events<br>
+            • Cannot request pickups<br>
+            • View-only access
+          </p>
+        </div>
+        
+        <button class="btn secondary" onclick="continueAsGuest()" style="width: 100%;">
+          👤 Continue as Guest
+        </button>
+
+        <div id="guestMsg" class="auth-message"></div>
+      </div>
+
+      <!-- PASSWORD RESET -->
+      <div id="resetTab" class="auth-form">
+        <h3>Reset Password</h3>
+        
+        <p style="color: #666; font-size: 0.95rem; margin: 1rem 0;">
+          Enter your email and we'll send you a password reset link.
+        </p>
+
+        <label>Email</label>
+        <input type="email" id="resetEmail" placeholder="your.email@example.com" />
+        
+        <button class="btn" onclick="resetPassword()" style="width: 100%; margin-top: 1rem;">
+          📧 Send Reset Link
+        </button>
+
+        <div style="text-align: center; margin-top: 1rem;">
+          <a href="#" onclick="showTab('login')" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+            ← Back to Login
+          </a>
+        </div>
+
+        <div id="resetMsg" class="auth-message"></div>
+      </div>
+
+      <!-- ROLE SELECTION (After Login) -->
+      <div id="roleSelection" class="auth-form" style="display: none;">
+        <h3>Select Your Dashboard</h3>
+        
+        <p style="color: #666; text-align: center; margin-bottom: 2rem;">
+          Where would you like to go?
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <a href="student.html" class="role-card">
+            <div class="role-icon">🎓</div>
+            <div class="role-info">
+              <h4>Student Dashboard</h4>
+              <p>Request pickups, manage events</p>
+            </div>
+          </a>
+
+          <a href="driver.html" class="role-card">
+            <div class="role-icon">🚗</div>
+            <div class="role-info">
+              <h4>Driver Panel</h4>
+              <p>Manage requests, report status</p>
+            </div>
+          </a>
+
+          <a href="admin.html" class="role-card">
+            <div class="role-icon">👔</div>
+            <div class="role-info">
+              <h4>Admin Dashboard</h4>
+              <p>Monitor system, view analytics</p>
+            </div>
+          </a>
+        </div>
+
+        <button class="btn danger" onclick="logoutUser()" style="width: 100%; margin-top: 1.5rem;">
+          🚪 Logout
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <script type="module" src="auth.js"></script>
+
+</body>
+</html>
